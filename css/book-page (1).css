@@ -1,0 +1,186 @@
+/* ===================================================
+   Book Page Template — David M. Jessup site
+   All colors/fonts live in variables up top so the
+   palette can be swapped without touching layout rules.
+   =================================================== */
+
+:root {
+  --color-bg: #f7f3ec;          /* warm parchment background */
+  --color-ink: #2b2420;          /* near-black warm brown, body text */
+  --color-rule: #d8cdbb;         /* hairline dividers */
+  --color-accent: #7a3b2e;       /* weathered rust/leather — links */
+  --color-accent-dark: #5c2c22;  /* hover state for rust links */
+  --color-muted: #6b6055;        /* secondary text, captions, attributions */
+  --color-cta: #800000;          /* deep red — buy button only */
+  --color-cta-dark: #5c0000;     /* buy button hover */
+
+  /* Big Caslon is a Mac/Adobe system font, not a free web font — this stack
+     renders it on Mac/iOS and falls back to a comparable serif everywhere else.
+     UPGRADE PATH: swap to "Libre Caslon Text" (free on Google Fonts) for an
+     identical look on every device — add the <link> in <head> and change
+     this line to: --font-display: 'Libre Caslon Text', Georgia, serif; */
+  --font-display: 'Big Caslon', 'Big Caslon FB', Garamond, 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --max-width: 760px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-dark); }
+
+/* ---------- Site nav (shared across all pages) ---------- */
+.site-nav {
+  border-bottom: 1px solid var(--color-rule);
+  padding: 1.25rem 1.5rem;
+}
+.site-nav ul {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+.site-nav a { text-decoration: none; color: var(--color-ink); }
+.site-nav a:hover { color: var(--color-accent); }
+
+/* ---------- Page wrapper ---------- */
+.book-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ---------- Hero: cover + title + hook ---------- */
+.book-hero {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+.book-hero img {
+  width: 180px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
+}
+.book-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+}
+.book-hook {
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+.book-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* ---------- Synopsis ---------- */
+.book-synopsis p { margin: 0 0 1.1rem; }
+
+/* ---------- Buy CTA ---------- */
+.buy-cta {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-rule);
+  background: #fffdf9;
+  text-align: center;
+}
+.buy-cta .price {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+.buy-button {
+  display: inline-block;
+  background: var(--color-cta);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+.buy-button:hover { background: var(--color-cta-dark); color: #fff; }
+
+/* ---------- Awards / accolades line ---------- */
+.book-accolades {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  padding: 1rem 0;
+  margin: 2rem 0;
+}
+
+/* ---------- Praise / reviews ---------- */
+.book-praise {
+  margin: 2.5rem 0;
+}
+.book-praise h2 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+}
+.praise-quote {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--color-rule);
+}
+.praise-quote p {
+  margin: 0 0 0.4rem;
+  font-style: italic;
+}
+.praise-quote cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* ---------- Secondary actions: excerpt / discussion questions ---------- */
+.book-more-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+  margin: 2rem 0;
+}
+
+/* ---------- Back to books nav ---------- */
+.back-to-books {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-rule);
+  font-size: 0.95rem;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 540px) {
+  .book-hero { flex-direction: column; }
+  .book-hero img { width: 140px; }
+}

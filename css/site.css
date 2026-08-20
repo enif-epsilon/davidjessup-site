@@ -1,0 +1,224 @@
+/* ===================================================
+   Site-wide stylesheet — David M. Jessup site
+   Shared nav, footer, typography, and layout for all
+   top-level pages. Book pages use their own book-page.css
+   but share these same color/font tokens.
+   =================================================== */
+
+:root {
+  --color-bg: #f7f3ec;
+  --color-ink: #2b2420;
+  --color-rule: #d8cdbb;
+  --color-accent: #7a3b2e;
+  --color-accent-dark: #5c2c22;
+  --color-muted: #6b6055;
+  --color-cta: #800000;
+  --color-cta-dark: #5c0000;
+
+  --font-display: 'Big Caslon', 'Big Caslon FB', Garamond, 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --max-width: 900px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: normal; }
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-dark); }
+
+.placeholder-note {
+  background: #fdf6e9;
+  border: 1px dashed var(--color-rule);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+}
+
+/* ---------- Site nav ---------- */
+.site-nav {
+  border-bottom: 1px solid var(--color-rule);
+  padding: 1.25rem 1.5rem;
+}
+.site-nav ul {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+.site-nav a { text-decoration: none; color: var(--color-ink); }
+.site-nav a:hover { color: var(--color-accent); }
+.site-nav a.current { color: var(--color-accent); font-weight: 600; }
+
+/* ---------- Page wrapper ---------- */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+.btn-primary {
+  background: var(--color-cta);
+  color: #fff;
+}
+.btn-primary:hover { background: var(--color-cta-dark); color: #fff; }
+
+/* ---------- Hero (Home page) ---------- */
+.hero {
+  text-align: center;
+  padding: 2rem 0 3rem;
+}
+.hero-image {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  display: block;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.25rem;
+}
+.hero .tagline {
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+.hero .subtitle {
+  color: var(--color-muted);
+  font-size: 1rem;
+  margin: 0 0 2rem;
+}
+.hero-intro {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* ---------- Book grid (Books page) ---------- */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.book-card { text-align: center; }
+.book-card img {
+  width: 100%;
+  max-width: 180px;
+  box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
+  margin-bottom: 1rem;
+}
+.book-card h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem;
+}
+.book-card p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin: 0 0 0.75rem;
+}
+
+/* ---------- Article list (Writing Notes page) ---------- */
+.article-list { list-style: none; padding: 0; }
+.article-list li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+.article-list a {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  text-decoration: none;
+}
+.article-list .article-date {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+/* ---------- Contact ---------- */
+.contact-block {
+  text-align: center;
+  padding: 2rem 0;
+}
+.contact-email {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+}
+
+/* ---------- Bio (About page) ---------- */
+.bio-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.bio-layout img {
+  width: 220px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--color-rule);
+  padding: 2rem 1.5rem;
+  margin-top: 3rem;
+}
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.site-footer h4 {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink);
+  margin: 0 0 0.5rem;
+}
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: 0.3rem; }
+.site-footer-copyright {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .bio-layout { flex-direction: column; }
+  .bio-layout img { width: 160px; }
+}
