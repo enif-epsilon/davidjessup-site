@@ -343,6 +343,52 @@ a:hover { color: var(--color-accent-dark); }
   box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
 }
 
+.bio-inline-photo {
+  margin: 2rem 0;
+}
+.bio-inline-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
+}
+.bio-inline-photo figcaption {
+  margin-top: 0.6rem;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+.bio-two-col {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin: 1.5rem 0;
+}
+.bio-two-col-text {
+  flex: 2;
+}
+.bio-two-col-text p {
+  margin: 0;
+}
+.bio-two-col-photo {
+  flex: 1;
+  margin: 0;
+}
+.bio-two-col-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 6px 18px rgba(43, 36, 32, 0.18);
+}
+.bio-two-col-photo figcaption {
+  margin-top: 0.5rem;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-align: center;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--color-rule);
@@ -381,6 +427,7 @@ a:hover { color: var(--color-accent-dark); }
   .book-grid { grid-template-columns: 1fr; }
   .bio-layout { flex-direction: column; }
   .bio-layout img { width: 160px; }
+  .bio-two-col { flex-direction: column; }
   .hero-signature { width: 70vw; }
   .hero-intro { margin-bottom: calc(24vw - 112px); }
   .site-logo { height: 32px; }
