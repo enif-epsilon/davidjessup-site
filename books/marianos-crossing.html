@@ -4,7 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mariano's Crossing — David M. Jessup</title>
-<link rel="stylesheet" href="css/book-page.css">
+<link rel="stylesheet" href="../css/book-page-immersive.css">
+
+<!-- ============================================================
+     PER-BOOK PALETTE OVERRIDE — Mariano's Crossing
+     This is the only place colors/images are set for this book.
+     Swap these values per book; layout stays identical.
+     ============================================================ -->
+<style>
+  :root {
+    --book-hero-bg: #e4d9c4;          /* placeholder: warm tan, swap per book mood */
+    --book-hero-ink: #2b2420;
+    --book-hero-image: url('../images/marianos-crossing-hero-bg.jpg');
+    --book-band-bg: #efe6d8;          /* praise band — usually a lighter tint of hero color */
+    --book-band-ink: #2b2420;
+    --book-excerpt-bg: #3b2a20;       /* fallback color, shows before/without an image */
+    --book-excerpt-ink: #f7f3ec;      /* keep light for legibility over a photo */
+    --book-excerpt-overlay: rgba(20, 14, 10, 0.55);
+    --book-excerpt-image: url('../images/marianos-crossing-excerpt-bg.jpg');
+    --book-footer-image: url('../images/marianos-crossing-footer-bg.png');
+    --book-footer-overlay: rgba(247, 243, 236, 0.82);
+  }
+</style>
 </head>
 <body>
 
@@ -19,49 +40,27 @@
   </ul>
 </nav>
 
-<main class="book-page">
-
-  <!-- ============ 1. HERO — cover, title, one-line hook ============ -->
-  <div class="book-hero">
+<!-- ============ 1. HERO — full-bleed, cover + title + buy link ============ -->
+<section class="book-hero-immersive">
+  <div class="book-hero-inner">
     <img src="../images/marianos-crossing-cover.jpg" alt="Mariano's Crossing book cover">
     <div>
+      <span class="book-badge">Book One</span>
       <h1>Mariano's Crossing</h1>
       <p class="book-hook">A historical novel of early Colorado</p>
-      <span class="book-badge">Book One</span>
+
+      <!-- ============ 2. BUY LINK ============ -->
+      <a class="buy-button" href="REPLACE_WITH_AMAZON_LINK" target="_blank" rel="noopener">
+        Buy on Amazon
+      </a>
+      <span class="buy-price">$22.95</span>
     </div>
   </div>
+</section>
 
-  <!-- ============ 2. SYNOPSIS — protect this real estate, keep it tight ============ -->
-  <div class="book-synopsis">
-    <p>
-      Mariano Medina, a former mountain man and friend of Kit Carson, his wife Takánsy,
-      and a young sawmill owner's son named John Alexander are drawn into a fight over
-      the future of the Medinas' fifteen-year-old daughter, Lena. As old secrets surface,
-      their struggle spirals toward a final, haunting reckoning.
-    </p>
-    <p>
-      The novel is grounded in real history: Medina was a significant figure in
-      post&#8211;gold rush Colorado, best remembered for guiding a U.S. Army brigade
-      through a brutal 1857 winter crossing.
-    </p>
-  </div>
-
-  <!-- ============ 3. AWARDS LINE — credibility, one line, no clutter ============ -->
-  <p class="book-accolades">
-    Winner, Rocky Mountain Fiction Writers Contest &nbsp;&middot;&nbsp;
-    Finalist, Colorado Book Award
-  </p>
-
-  <!-- ============ 4. BUY CTA — the one action that matters ============ -->
-  <div class="buy-cta">
-    <p class="price">$22.95</p>
-    <a class="buy-button" href="REPLACE_WITH_AMAZON_LINK" target="_blank" rel="noopener">
-      Buy on Amazon
-    </a>
-  </div>
-
-  <!-- ============ 5. PRAISE — 2–3 strong quotes, not eight ============ -->
-  <section class="book-praise">
+<!-- ============ 3. PRAISE — full-bleed color band ============ -->
+<section class="book-praise-band">
+  <div class="book-content">
     <h2>Praise for Mariano's Crossing</h2>
 
     <blockquote class="praise-quote">
@@ -75,26 +74,44 @@
       make the truth tantalizingly elusive.</p>
       <cite>&#8212; Louis Bayard, New York Times bestselling author</cite>
     </blockquote>
+  </div>
+</section>
 
+<!-- ============ 4. IMMERSIVE EXCERPT — full-bleed image + overlay ============ -->
+<section class="book-excerpt-immersive">
+  <div class="excerpt-inner">
+    <span class="excerpt-eyebrow">From the novel</span>
+    <p class="excerpt-text">
+      Mariano stood at the river's edge as the first snow of the season began to fall,
+      knowing the crossing ahead would test every man who dared attempt it &#8212;
+      and that the mountains, as always, kept their own counsel.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 5. MORE PRAISE — second band, alternating context ============ -->
+<section class="book-praise-band">
+  <div class="book-content">
     <blockquote class="praise-quote">
       <p>A mesmerizing tale of people struggling to find their place in the
       rapidly changing landscape of post&#8211;gold rush Colorado.</p>
       <cite>&#8212; Page Lambert, author of Shifting Stars</cite>
     </blockquote>
-  </section>
-
-  <!-- ============ 6. SECONDARY ACTIONS — optional per book ============ -->
-  <div class="book-more-links">
-    <a href="../writing-notes/marianos-crossing-excerpt.html">Read an excerpt &rarr;</a>
-    <a href="../discussion-questions.html#marianos-crossing">Discussion questions for book clubs &rarr;</a>
   </div>
+</section>
 
-  <!-- ============ BACK TO BOOKS ============ -->
-  <p class="back-to-books">
-    <a href="../books.html">&larr; Back to all books</a>
-  </p>
-
-</main>
+<!-- ============ Secondary actions + back link, shared quiet section ============ -->
+<section class="book-footer-links">
+  <div class="book-footer-links-inner">
+    <div class="book-more-links">
+      <a href="../writing-notes/marianos-crossing-excerpt.html">Read a longer excerpt &rarr;</a>
+      <a href="../discussion-questions.html#marianos-crossing">Discussion questions for book clubs &rarr;</a>
+    </div>
+    <p class="back-to-books">
+      <a href="../books.html">&larr; Back to all books</a>
+    </p>
+  </div>
+</section>
 
 </body>
 </html>
