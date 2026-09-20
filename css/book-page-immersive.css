@@ -60,14 +60,28 @@ a:hover { color: var(--color-accent-dark); }
 /* ---------- Site nav ---------- */
 .site-nav {
   border-bottom: 1px solid var(--color-rule);
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+.site-logo-link {
+  display: block;
+  line-height: 0;
+}
+.site-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 .site-nav ul {
-  max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
+  justify-content: flex-end;
   gap: 1.75rem;
   flex-wrap: wrap;
   font-size: 0.95rem;
@@ -268,4 +282,5 @@ a:hover { color: var(--color-accent-dark); }
   .book-hero-inner img { width: 180px; }
   .excerpt-text { font-size: 1.3rem; }
   .book-excerpt-immersive { padding: 4rem 1.25rem; min-height: 45vh; }
+  .site-logo { height: 32px; }
 }

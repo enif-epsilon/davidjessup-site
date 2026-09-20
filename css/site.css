@@ -30,6 +30,7 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 { font-family: var(--font-display); font-weight: normal; }
@@ -49,14 +50,28 @@ a:hover { color: var(--color-accent-dark); }
 /* ---------- Site nav ---------- */
 .site-nav {
   border-bottom: 1px solid var(--color-rule);
-  padding: 1.25rem 1.5rem;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+.site-logo-link {
+  display: block;
+  line-height: 0;
+}
+.site-logo {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 .site-nav ul {
-  max-width: var(--max-width);
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
+  justify-content: flex-end;
   gap: 1.75rem;
   flex-wrap: wrap;
   font-size: 0.95rem;
@@ -87,36 +102,181 @@ a:hover { color: var(--color-accent-dark); }
 }
 .btn-primary:hover { background: var(--color-cta-dark); color: #fff; }
 
-/* ---------- Hero (Home page) ---------- */
+/* ---------- Hero (Home page) ----------
+   Full-bleed sky photo with the trilogy's three covers grounded
+   along the bottom edge, matching the immersive full-bleed treatment
+   used on the book pages (dark overlay for text legibility over a photo). */
 .hero {
+  position: relative;
+  background-color: var(--color-ink);
+  background-image: url('../images/sepia-sky-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: var(--color-bg);
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5rem 1.5rem 2.5rem;
   text-align: center;
-  padding: 2rem 0 3rem;
 }
-.hero-image {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto 2rem;
-  display: block;
+.hero-text,
+.hero-covers {
+  position: relative;
+  z-index: 1;
 }
 .hero h1 {
-  font-size: 2.5rem;
-  margin: 0 0 0.25rem;
+  color: var(--color-ink);
+  font-size: 2.6rem;
+  margin: 0 0 0.35rem;
 }
 .hero .tagline {
   font-style: italic;
-  color: var(--color-muted);
+  color: var(--color-ink);
   font-size: 1.1rem;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.35rem;
 }
 .hero .subtitle {
-  color: var(--color-muted);
+  color: var(--color-ink);
   font-size: 1rem;
-  margin: 0 0 2rem;
+  margin: 0;
 }
+.hero-covers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(14px, 4vw, 48px);
+  width: 100%;
+  max-width: 700px;
+  margin-top: 2.5rem;
+}
+.hero-covers img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+}
+.hero-covers a {
+  display: block;
+  flex: 0 1 220px;
+  min-width: 0;
+  transition: transform 0.2s ease;
+}
+.hero-covers a:hover,
+.hero-covers a:focus-visible { transform: translateY(-6px); }
+
 .hero-intro {
+  position: relative;
   max-width: 640px;
   margin: 0 auto;
+  margin-bottom: calc(17.5vw - 112px);
   text-align: left;
+}
+.hero-signature {
+  position: absolute;
+  top: 100%;
+  margin-top: 1.5vw;
+  right: 50%;
+  margin-right: -50vw;
+  width: 50vw;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  opacity: 0.22;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- Featured Review (Home page) ----------
+   Full-bleed pull-quote band with a dark, dramatic photo behind it —
+   same overlay technique as the book pages' immersive excerpt section,
+   so the quote reads clearly in white over the image. */
+.review-band {
+  position: relative;
+  background-color: var(--color-ink);
+  background-image: url('../images/review-band-bg.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  padding: 4.5rem 1.5rem calc(4.5rem + 25px);
+  text-align: center;
+}
+.review-band::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(20, 16, 14, 0.6);
+}
+.review-quote {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+}
+.review-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.55;
+  margin: 0 0 1.25rem;
+  color: #fff;
+}
+.review-quote cite {
+  font-style: normal;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Short Bio (Home page) ---------- */
+.home-bio {
+  margin: 1rem 0 3rem;
+}
+.home-bio h2 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+.home-bio p {
+  margin: 0 0 1rem;
+}
+
+/* ---------- Awards (Home page) ----------
+   Full-bleed band in a slightly darker parchment tone — the same
+   shade used for the praise bands on the book pages — to set this
+   section apart from the Bio above it. */
+.awards-band {
+  background: #efe6d8;
+}
+.home-awards {
+  margin: 0;
+  padding: 3rem 0;
+}
+.home-awards h2 {
+  font-size: 1.6rem;
+  margin: 0 0 1rem;
+}
+.awards-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.awards-list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--color-rule);
+  line-height: 1.5;
+}
+.awards-list li:last-child {
+  border-bottom: none;
+}
+.awards-list .award-book {
+  display: block;
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-top: 0.15rem;
 }
 
 /* ---------- Book grid (Books page) ---------- */
@@ -221,4 +381,7 @@ a:hover { color: var(--color-accent-dark); }
   .book-grid { grid-template-columns: 1fr; }
   .bio-layout { flex-direction: column; }
   .bio-layout img { width: 160px; }
+  .hero-signature { width: 70vw; }
+  .hero-intro { margin-bottom: calc(24vw - 112px); }
+  .site-logo { height: 32px; }
 }
