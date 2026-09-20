@@ -1,0 +1,271 @@
+/* ===================================================
+   Book Page Template — IMMERSIVE VERSION
+   David M. Jessup site
+
+   Structure: full-bleed hero + full-bleed color/image
+   bands, with a narrow readable column only where body
+   text needs it (praise quotes, excerpt).
+
+   PALETTE: base site tokens (parchment/rust/deep red)
+   live here as defaults. Each book page overrides a
+   small set of --book-* variables in its own <head> to
+   get its own palette while sharing this exact layout.
+   See the override block at the top of each book HTML
+   file, e.g. books/marianos-crossing.html.
+   =================================================== */
+
+:root {
+  /* site-wide base tokens (unchanged from site.css) */
+  --color-bg: #f7f3ec;
+  --color-ink: #2b2420;
+  --color-rule: #d8cdbb;
+  --color-accent: #7a3b2e;
+  --color-accent-dark: #5c2c22;
+  --color-muted: #6b6055;
+  --color-cta: #800000;
+  --color-cta-dark: #5c0000;
+
+  --font-display: 'Big Caslon', 'Big Caslon FB', Garamond, 'Times New Roman', serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --max-width: 760px;
+
+  /* ---------- PER-BOOK PALETTE (defaults — override per book) ---------- */
+  --book-hero-bg: var(--color-bg);       /* hero section background color */
+  --book-hero-ink: var(--color-ink);     /* hero text color */
+  --book-hero-image: none;               /* optional hero background texture/photo */
+  --book-band-bg: #efe6d8;               /* praise band background */
+  --book-band-ink: var(--color-ink);     /* praise band text */
+  --book-excerpt-bg: #2b2420;            /* immersive excerpt fallback color (shows if no image) */
+  --book-excerpt-ink: #f7f3ec;           /* text color over the excerpt image — usually light */
+  --book-excerpt-overlay: rgba(20, 16, 14, 0.55); /* darkening layer for text contrast over image */
+  --book-footer-image: none;             /* optional subtle graphic behind the closing links */
+  --book-footer-overlay: rgba(247, 243, 236, 0.82); /* lightening wash to keep the graphic subtle */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 18px;
+}
+
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-dark); }
+
+/* ---------- Site nav ---------- */
+.site-nav {
+  border-bottom: 1px solid var(--color-rule);
+  padding: 1.25rem 1.5rem;
+}
+.site-nav ul {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+.site-nav a { text-decoration: none; color: var(--color-ink); }
+.site-nav a:hover { color: var(--color-accent); }
+
+/* ---------- Readable content wrapper (used INSIDE full-bleed sections) ---------- */
+.book-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* =====================================================
+   1. HERO — full-bleed, cover image + title + buy link
+   ===================================================== */
+.book-hero-immersive {
+  background-color: var(--book-hero-bg);
+  background-image: var(--book-hero-image);
+  background-size: cover;
+  background-position: center;
+  color: var(--book-hero-ink);
+  padding: 3.5rem 1.5rem;
+}
+.book-hero-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+.book-hero-inner img {
+  width: 220px;
+  flex-shrink: 0;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+}
+.book-badge {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  border: 1px solid currentColor;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+.book-hero-inner h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+}
+.book-hook {
+  font-style: italic;
+  opacity: 0.85;
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+}
+
+/* ---------- 2. BUY LINK ---------- */
+.buy-button {
+  display: inline-block;
+  background: var(--color-cta);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+}
+.buy-button:hover { background: var(--color-cta-dark); color: #fff; }
+.buy-price {
+  display: block;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+/* =====================================================
+   3. PRAISE BAND — full-bleed color, centered quotes
+   ===================================================== */
+.book-praise-band {
+  background: var(--book-band-bg);
+  color: var(--book-band-ink);
+  padding: 3.5rem 1.5rem;
+}
+.book-praise-band h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+.praise-quote {
+  margin: 0 0 1.75rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid currentColor;
+  opacity: 0.95;
+}
+.praise-quote p {
+  margin: 0 0 0.4rem;
+  font-style: italic;
+  font-size: 1.05rem;
+}
+.praise-quote cite {
+  font-style: normal;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* =====================================================
+   4. IMMERSIVE EXCERPT — full-bleed background image,
+   dark overlay for legibility, large quoted passage
+   ===================================================== */
+.book-excerpt-immersive {
+  position: relative;
+  background-color: var(--book-excerpt-bg);
+  background-image: var(--book-excerpt-image, none);
+  background-size: cover;
+  background-position: center;
+  color: var(--book-excerpt-ink);
+  padding: 6rem 1.5rem;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.book-excerpt-immersive::before {
+  /* darkening layer so text stays legible over any photo */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--book-excerpt-overlay);
+}
+.excerpt-inner {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.excerpt-eyebrow {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+.excerpt-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* =====================================================
+   Secondary actions / back link — quiet section with
+   optional subtle background graphic, aligned to the
+   same reading column as the body text above it
+   ===================================================== */
+.book-footer-links {
+  position: relative;
+  background-color: var(--color-bg);
+  background-image: var(--book-footer-image);
+  background-size: cover;
+  background-position: center top;
+  padding: 2.5rem 1.5rem 3rem;
+}
+.book-footer-links::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--book-footer-overlay);
+}
+.book-footer-links-inner {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+.book-more-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.95rem;
+  margin: 0 0 1rem;
+}
+.back-to-books {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .book-hero-inner { flex-direction: column; text-align: center; }
+  .book-hero-inner img { width: 180px; }
+  .excerpt-text { font-size: 1.3rem; }
+  .book-excerpt-immersive { padding: 4rem 1.25rem; min-height: 45vh; }
+}
